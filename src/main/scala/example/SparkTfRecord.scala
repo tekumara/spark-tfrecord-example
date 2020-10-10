@@ -12,7 +12,6 @@ object SparkTfRecord {
     new SparkConf()
       .setMaster("local[*]")
       .setAppName("test")
-      .set("spark.ui.enabled", "false")
       .set("spark.driver.host", "localhost")
 
   val spark = SparkSession
