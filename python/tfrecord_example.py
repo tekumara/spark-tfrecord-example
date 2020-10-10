@@ -3,10 +3,8 @@ from pyspark import SparkConf
 from pyspark.sql import DataFrame, SparkSession
 
 conf = (SparkConf()
-        .setMaster("local[*]")
-        .setAppName("test")
-        .set("spark.ui.enabled", "false")
-        .set("spark.driver.host", "localhost"))
+        .setAppName("tfrecord_example")
+        .set("spark.ui.enabled", "false"))
 
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
 

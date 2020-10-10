@@ -43,5 +43,5 @@ $ ls -la test-output.tfrecord/part* | awk '{print $5, $9$10$11}' | column -t
 ```
 mkdir lib
 wget -P lib https://repo1.maven.org/maven2/org/tensorflow/spark-tensorflow-connector_2.11/1.15.0/spark-tensorflow-connector_2.11-1.15.0.jar
-spark-submit --jars lib/spark-tensorflow-connector_2.11-1.15.0.jar pyspark/pyspark_tfrecord.py
+spark-submit --jars lib/spark-tensorflow-connector_2.11-1.15.0.jar python/tfrecord_example.py
 ```
