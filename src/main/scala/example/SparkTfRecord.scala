@@ -2,7 +2,7 @@ package example
 
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.{ DataFrame, Row }
+import org.apache.spark.sql.{DataFrame, Row}
 import org.apache.spark.sql.catalyst.expressions.GenericRow
 import org.apache.spark.sql.types._
 
@@ -37,7 +37,9 @@ object SparkTfRecord {
 
     //Save DataFrame as TFRecords
     val df: DataFrame = spark.createDataFrame(rdd, schema)
-    df.write.format("tfrecords").option("recordType", "Example").option("codec", "org.apache.hadoop.io.compress.GzipCodec").save(path)
+    df.write.format("tfrecords").option("recordType", "Example")
+      .option("codec", "org.apache.hadoop.io.compress.GzipCodec")
+      .save(path)
 
     //Read TFRecords into DataFrame.
     //The DataFrame schema is inferred from the TFRecords if no custom schema is provided.
@@ -47,7 +49,6 @@ object SparkTfRecord {
     //Read TFRecords into DataFrame using custom schema
     val importedDf2: DataFrame = spark.read.format("tfrecords").schema(schema).load(path)
     importedDf2.show()
-
   }
 
 }

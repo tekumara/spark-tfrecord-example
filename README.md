@@ -1,6 +1,6 @@
 # spark-tfrecord-example
 
-Example spark application writing out gzipped TFRecord
+[Example spark application](src/main/scala/example/SparkTfRecord.scala) writing out gzipped TFRecord, see [spark-tensorflow-connector](https://github.com/tensorflow/ecosystem/tree/master/spark/spark-tensorflow-connector#scala-api).
 
 Ungzipped:
 
