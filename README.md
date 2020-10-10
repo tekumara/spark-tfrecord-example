@@ -2,7 +2,7 @@
 
 [Example spark application](src/main/scala/example/SparkTfRecord.scala) writing out gzipped TFRecord, see [spark-tensorflow-connector](https://github.com/tensorflow/ecosystem/tree/master/spark/spark-tensorflow-connector#scala-api).
 
-Ungzipped:
+Without compression:
 
 ```
 $ ls -la test-output.tfrecord/part* | awk '{print $5, $9$10$11}' | column -t 
@@ -40,8 +40,12 @@ $ ls -la test-output.tfrecord/part* | awk '{print $5, $9$10$11}' | column -t
 
 ## PySpark
 
+To run [python/tfrecord_example.py](python/tfrecord_example.py)
+
 ```
 mkdir lib
 wget -P lib https://repo1.maven.org/maven2/org/tensorflow/spark-tensorflow-connector_2.11/1.15.0/spark-tensorflow-connector_2.11-1.15.0.jar
 spark-submit --jars lib/spark-tensorflow-connector_2.11-1.15.0.jar python/tfrecord_example.py
 ```
+
+NB: spark-tensorflow-connector_2.11 is built for Scala 2.11, so this needs a Scala 2.11 Spark build, eg: Spark 2.4.x
