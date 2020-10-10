@@ -37,7 +37,7 @@ object SparkTfRecord {
 
     //Save DataFrame as TFRecords
     val df: DataFrame = spark.createDataFrame(rdd, schema)
-    df.write.format("tfrecords").option("recordType", "Example").save(path)
+    df.write.format("tfrecords").option("recordType", "Example").option("codec", "org.apache.hadoop.io.compress.GzipCodec").save(path)
 
     //Read TFRecords into DataFrame.
     //The DataFrame schema is inferred from the TFRecords if no custom schema is provided.
