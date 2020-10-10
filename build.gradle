@@ -13,15 +13,20 @@ repositories {
 }
 
 dependencies {
-    def scalaBuildVersion = '2.12'
-    def scalaVersion = '2.12.12'
+    def scalaBuildVersion = "2.11"
+    def scalaVersion = "2.11.12"
+    def sparkVersion = "2.4.7"
 
     implementation "org.scala-lang:scala-library:${scalaVersion}"
-    
+    implementation "org.apache.spark:spark-core_${scalaBuildVersion}:${sparkVersion}"
+    implementation "org.apache.spark:spark-sql_${scalaBuildVersion}:${sparkVersion}"
+
+    implementation "org.tensorflow:spark-tensorflow-connector_${scalaBuildVersion}:1.15.0"
+
     testImplementation "org.scalatest:scalatest_${scalaBuildVersion}:3.0.9"
 
     // used by com.github.maiflai.scalatest
-    testRuntimeOnly 'org.pegdown:pegdown:1.6.0'
+    testRuntimeOnly "org.pegdown:pegdown:1.6.0"
 }
 
 // see https://tpolecat.github.io/2017/04/25/scalac-flags.html
