@@ -9,8 +9,6 @@ conf = SparkConf().setAppName("tfrecord_example")
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
 path = "test-output.tfrecord"
-if os.path.exists(path):
-    shutil.rmtree(path)
 
 fields = [StructField("id", IntegerType()), StructField("IntegerCol", IntegerType()),
           StructField("LongCol", LongType()), StructField("FloatCol", FloatType()),
@@ -23,6 +21,7 @@ df = spark.createDataFrame(rdd, schema)
 (df.write.format("tfrecords").
  option("recordType", "Example").
  option("codec", "org.apache.hadoop.io.compress.GzipCodec").
+ mode("overwrite").
  save(path))
 
 df = spark.read.format("tfrecords").option("recordType", "Example").load(path)
