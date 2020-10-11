@@ -1,12 +1,16 @@
 from pyspark.sql.types import *
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
+import shutil
+import os
 
 conf = SparkConf().setAppName("tfrecord_example")
 
 spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
 path = "test-output.tfrecord"
+if os.path.exists(path):
+    shutil.rmtree(path)
 
 fields = [StructField("id", IntegerType()), StructField("IntegerCol", IntegerType()),
           StructField("LongCol", LongType()), StructField("FloatCol", FloatType()),
