@@ -10,18 +10,21 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    def scalaBuildVersion = "2.11"
-    def scalaVersion = "2.11.12"
-    def sparkVersion = "2.4.7"
+    def scalaBuildVersion = "2.12"
+    def scalaVersion = "2.12.12"
+    def sparkVersion = "3.0.0"
 
     implementation "org.scala-lang:scala-library:${scalaVersion}"
     implementation "org.apache.spark:spark-core_${scalaBuildVersion}:${sparkVersion}"
     implementation "org.apache.spark:spark-sql_${scalaBuildVersion}:${sparkVersion}"
 
-    implementation "org.tensorflow:spark-tensorflow-connector_${scalaBuildVersion}:1.15.0"
+    //implementation "org.tensorflow:spark-tensorflow-connector_${scalaBuildVersion}:1.15.0"
+    //compile fileTree(dir: 'lib', include: 'spark-tensorflow-connector_2.12-1.11.0.jar')
+    implementation "org.tensorflow:spark-tensorflow-connector_${scalaBuildVersion}:1.11.0"
 
     testImplementation "org.scalatest:scalatest_${scalaBuildVersion}:3.0.9"
 
